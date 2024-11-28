@@ -1,5 +1,5 @@
 import levenshtein from 'fast-levenshtein';
-
+import type { LevenshteinOptions } from './types/fast-levenshtein';
 interface NameMatchConfig {
   setScoreWeight: number;        // Weight for exact token matches (0-1)
   fuzzyScoreWeight: number;      // Weight for fuzzy token matches (0-1)
@@ -142,12 +142,12 @@ function isFuzzyMatch(
     const truncated1: string = token1.substring(0, truncLength);
     const truncated2: string = token2.substring(0, truncLength);
     
-    if (levenshtein.get(truncated1, truncated2) <= config.levenshteinThreshold) {
+    if (levenshtein.get(truncated1, truncated2, { useCollator: true }) <= config.levenshteinThreshold) {
       return true;
     }
   }
   
-  return levenshtein.get(token1, token2) <= config.levenshteinThreshold;
+  return levenshtein.get(token1, token2, { useCollator: true }) <= config.levenshteinThreshold;
 }
 
 function compareFuzzyTokens(
