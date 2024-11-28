@@ -1,4 +1,4 @@
-import levenshtein from 'fast-levenshtein';
+import * as levenshtein from 'fast-levenshtein';
 
 interface NameMatchConfig {
   setScoreWeight: number;        // Weight for exact token matches (0-1)

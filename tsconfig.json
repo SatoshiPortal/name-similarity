@@ -7,14 +7,15 @@
     "outDir": "./dist",
     "strict": true,
     "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "declarationMap": true,
     "typeRoots": [
-      "lib",
-      "node_modules/@types"
+      "./node_modules/@types",
+      "./lib"
     ]
   },
   "include": ["lib/**/*.ts", "lib/**/*.d.ts", "index.ts"],
