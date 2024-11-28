@@ -1,0 +1,31 @@
+{
+  "type": "module",
+  "name": "@sp/name-similarity",
+  "version": "1.0.0",
+  "description": "Compare names for similarity using fuzzy matching",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "vitest --config vitest.config.ts",
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "devDependencies": {
+    "@types/fast-levenshtein": "^0.0.4",
+    "dotenv": "^16.4.5",
+    "typescript": "^5.3.3",
+    "vitest": "^2.1.6"
+  },
+  "peerDependencies": {
+    "fast-levenshtein": "^3.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  }
+}
