@@ -6,7 +6,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "lib/types"
   ],
   "scripts": {
     "test": "vitest --config vitest.config.ts",

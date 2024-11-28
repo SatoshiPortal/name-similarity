@@ -1,5 +1,5 @@
 import levenshtein from 'fast-levenshtein';
-import type { LevenshteinOptions } from './types/fast-levenshtein';
+
 interface NameMatchConfig {
   setScoreWeight: number;        // Weight for exact token matches (0-1)
   fuzzyScoreWeight: number;      // Weight for fuzzy token matches (0-1)
