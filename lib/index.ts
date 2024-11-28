@@ -1,5 +1,18 @@
 import levenshtein from 'fast-levenshtein';
 
+declare module 'fast-levenshtein' {
+    interface LevenshteinOptions {
+        useCollator?: boolean;
+        replacementCost?: number;
+    }
+
+    const levenshtein: {
+        get(str1: string, str2: string, options?: LevenshteinOptions): number;
+    };
+
+    export default levenshtein;
+} 
+
 interface NameMatchConfig {
   setScoreWeight: number;        // Weight for exact token matches (0-1)
   fuzzyScoreWeight: number;      // Weight for fuzzy token matches (0-1)
