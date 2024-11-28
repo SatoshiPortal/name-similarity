@@ -1,6 +1,6 @@
 import * as levenshtein from 'fast-levenshtein';
 
-interface NameMatchConfig {
+export interface NameMatchConfig {
   setScoreWeight: number;        // Weight for exact token matches (0-1)
   fuzzyScoreWeight: number;      // Weight for fuzzy token matches (0-1)
   approvalThreshold: number;     // Minimum score to consider names similar (0-1)

@@ -16,7 +16,8 @@
     "typeRoots": [
       "./node_modules/@types",
       "./lib"
-    ]
+    ],
+    "rootDir": "."
   },
   "include": ["lib/**/*.ts", "lib/**/*.d.ts", "index.ts"],
   "exclude": ["node_modules", "dist"]

@@ -3,8 +3,8 @@
   "name": "@sp/name-similarity",
   "version": "1.0.0",
   "description": "Compare names for similarity using fuzzy matching",
-  "main": "lib/index.ts",
-  "types": "lib/types.d.ts",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "files": [
     "dist",
     "lib"
@@ -25,8 +25,8 @@
   },
   "exports": {
     ".": {
-      "types": "./lib/types.d.ts",
-      "import": "./lib/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
     }
   }
 }
