@@ -3,11 +3,11 @@
   "name": "@sp/name-similarity",
   "version": "1.0.0",
   "description": "Compare names for similarity using fuzzy matching",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "lib/index.ts",
+  "types": "lib/types.d.ts",
   "files": [
     "dist",
-    "lib/types"
+    "lib"
   ],
   "scripts": {
     "test": "vitest --config vitest.config.ts",
@@ -25,8 +25,8 @@
   },
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "types": "./lib/types.d.ts",
+      "import": "./lib/index.ts"
     }
   }
 }

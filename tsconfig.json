@@ -13,10 +13,10 @@
     "sourceMap": true,
     "declarationMap": true,
     "typeRoots": [
-      "./lib/types",
-      "./node_modules/@types"
+      "lib",
+      "node_modules/@types"
     ]
   },
-  "include": ["lib/**/*"],
+  "include": ["lib/**/*.ts", "lib/**/*.d.ts", "index.ts"],
   "exclude": ["node_modules", "dist"]
 } 
