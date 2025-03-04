@@ -7,6 +7,7 @@ export interface NameMatchConfig {
   tokenPartialLengthThreshold: number;  // Minimum length for partial token matching
   levenshteinThreshold: number;  // Maximum Levenshtein distance for fuzzy matches
   excludedWords: string[];       // Words to ignore during comparison
+  singleTokenThreshold: number;  // Minimum threshold for single token matches
 }
 
 const defaultConfig: NameMatchConfig = {
@@ -15,6 +16,7 @@ const defaultConfig: NameMatchConfig = {
   approvalThreshold: 0.66,
   tokenPartialLengthThreshold: 3,
   levenshteinThreshold: 2,
+  singleTokenThreshold: 0.8,
   excludedWords: [
     // English titles
     'mr', 'mrs', 'ms', 'dr', 'miss', 'mister', 'esq',
@@ -87,6 +89,28 @@ function isNameSimilar(
 
   const tokens1: string[] = normalizeName(name1, config);
   const tokens2: string[] = normalizeName(name2, config);
+
+  // Handle single token vs multi-token cases
+  if ((tokens1.length === 1 && tokens2.length > 1) || 
+      (tokens2.length === 1 && tokens1.length > 1)) {
+    
+    // When matching a single token against multiple tokens:
+    // 1. Calculate what portion of the longer name is covered
+    const singleToken = tokens1.length === 1 ? tokens1[0] : tokens2[0];
+    const multiTokens = tokens1.length > 1 ? tokens1 : tokens2;
+    
+    // If single token exists in multi tokens, check if it's enough
+    if (multiTokens.includes(singleToken)) {
+      // Require the single token to be substantial (>50%) of the total character length
+      const multiTokensLength = multiTokens.join('').length;
+      const singleTokenLength = singleToken.length;
+      
+      // If the single token is a small fraction of the total name, reject the match
+      if (singleTokenLength / multiTokensLength < config.singleTokenThreshold) {
+        return false;
+      }
+    }
+  }
   
   const setScore: number = compareTokenSets(tokens1, tokens2);
   const fuzzyScore: number = compareFuzzyTokens(tokens1, tokens2, config);

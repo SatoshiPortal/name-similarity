@@ -219,5 +219,21 @@ describe('Name matching', () => {
       expect(areNamesSimilar('FRANKLIN_DE_JESUS_AC', ['FRANKLIN DE JESUS ACEVEDO VARGAS'])).toBe(true);
       expect(areNamesSimilar('HENRIETTE__SEIDNER_A', ['HENRIETTE_SEIDNER_AG'])).toBe(true);
     });
+
+    it('random tests', () => {
+      expect(areNamesSimilar('jonny', ['JONATHAN RILEY SUTTON'])).toBe(false);
+      expect(areNamesSimilar('JONATHAN', ['JONATHAN SUTTON'])).toBe(false);
+      expect(areNamesSimilar('MICROSOFT', ['MICROSOFT INC'])).toBe(true);
+      expect(areNamesSimilar('Edenia', ['Sistemas Edenia LLC'])).toBe(false);
+      expect(areNamesSimilar('3ni', ['3NI'])).toBe(true);
+      expect(areNamesSimilar('NEXT SOLAR', ['Next Solar'])).toBe(true);
+      expect(areNamesSimilar('23:59', ['23:59'])).toBe(false);
+      expect(areNamesSimilar('CENTRI SERVICES INC.', ['Centri Services Inc'])).toBe(true);
+      expect(areNamesSimilar('Adrien Lacombe Holding', ['SAS ADRIEN LACOMBE HOLDING'])).toBe(true);
+      expect(areNamesSimilar('PRAESIDIUM', ['PRAESIDIUM'])).toBe(true);
+      expect(areNamesSimilar('SAS PEROU', ['PEROU SAS'])).toBe(true);
+      expect(areNamesSimilar('808 Labs', ['808 Labs SAS'])).toBe(true);
+    });
+
   });
 }); 
